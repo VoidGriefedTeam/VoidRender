@@ -1,0 +1,66 @@
+# Build directories
+build/
+out/
+cmake-build-*/
+.vs/
+.vscode/
+
+# CMake
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+CTestTestfile.cmake
+install_manifest.txt
+compile_commands.json
+
+# Ninja
+.ninja_deps
+.ninja_log
+
+# Visual Studio
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Compiled binaries
+*.exe
+*.dll
+*.lib
+*.a
+*.obj
+*.o
+*.pdb
+*.ilk
+*.exp
+
+# Debug / profiling
+*.dmp
+*.log
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+*.swp
+*.swo
+*~
+
+# OS files
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# IDE metadata
+.idea/
+
+# Local dependencies / generated files
+_install/
+install/
+
+# Test output
+test-output/
+coverage/
+
+# Generated runtime data
+runtime/generated/
