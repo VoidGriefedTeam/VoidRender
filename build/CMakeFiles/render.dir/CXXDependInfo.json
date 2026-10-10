@@ -1,0 +1,35 @@
+{
+	"bmi-installation" : null,
+	"compiler-frontend-variant" : "MSVC",
+	"compiler-id" : "MSVC",
+	"compiler-simulate-id" : "",
+	"config" : "Release",
+	"cxx-modules" : {},
+	"database-info" : null,
+	"dir-cur-bld" : "E:/voidrender/build",
+	"dir-cur-src" : "E:/voidrender",
+	"dir-top-bld" : "E:/voidrender/build",
+	"dir-top-src" : "E:/voidrender",
+	"exports" : [],
+	"forward-modules-from-target-dirs" : [],
+	"include-dirs" : 
+	[
+		"E:\\voidrender\\include",
+		"generated",
+		"E:\\voidrender\\THIRD_PARTY\\voidcl\\include",
+		"E:\\voidrender\\THIRD_PARTY\\sgl\\include\\simplegl",
+		"E:\\voidrender\\THIRD_PARTY\\Glaze\\glaze-9.0.0\\include",
+		"E:\\voidrender\\THIRD_PARTY\\mapfmt\\include"
+	],
+	"language" : "CXX",
+	"linked-target-dirs" : [],
+	"module-dir" : "E:/voidrender/build/CMakeFiles/render.dir",
+	"sources" : 
+	{
+		"CMakeFiles/render.dir/src/render.cpp.obj" : 
+		{
+			"language" : "CXX",
+			"source" : "E:/voidrender/src/render.cpp"
+		}
+	}
+}

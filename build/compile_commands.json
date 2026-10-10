@@ -1,0 +1,14 @@
+[
+{
+  "directory": "E:/voidrender/build",
+  "command": "\"C:\\Program Files (x86)\\Microsoft Visual Studio\\18\\BuildTools\\VC\\Tools\\MSVC\\14.51.36231\\bin\\Hostx64\\x64\\cl.exe\"  /nologo /TP -D_MBCS -D_WINDLL -Drender_EXPORTS -IE:\\voidrender\\include -IE:\\voidrender\\build\\generated -IE:\\voidrender\\THIRD_PARTY\\voidcl\\include -IE:\\voidrender\\THIRD_PARTY\\sgl\\include\\simplegl -IE:\\voidrender\\THIRD_PARTY\\Glaze\\glaze-9.0.0\\include -IE:\\voidrender\\THIRD_PARTY\\mapfmt\\include /DWIN32 /D_WINDOWS /EHsc /O2 /Ob2 /DNDEBUG -std:c++latest -MD @CMakeFiles\\render.dir\\src\\render.cpp.obj.modmap /FoCMakeFiles\\render.dir\\src\\render.cpp.obj /FdCMakeFiles\\render.dir\\ /FS -c E:\\voidrender\\src\\render.cpp",
+  "file": "E:/voidrender/src/render.cpp",
+  "output": "E:/voidrender/build/CMakeFiles/render.dir/src/render.cpp.obj"
+},
+{
+  "directory": "E:/voidrender/build",
+  "command": "\"C:\\Program Files (x86)\\Microsoft Visual Studio\\18\\BuildTools\\VC\\Tools\\MSVC\\14.51.36231\\bin\\Hostx64\\x64\\cl.exe\"  /nologo /TP -D_MBCS -IE:\\voidrender\\include -IE:\\voidrender\\THIRD_PARTY\\voidcl\\include -IE:\\voidrender\\THIRD_PARTY\\sgl\\include\\simplegl -IE:\\voidrender\\THIRD_PARTY\\Glaze\\glaze-9.0.0 -IE:\\voidrender\\THIRD_PARTY\\mapfmt\\include -IE:\\voidrender\\build\\generated -IE:\\voidrender\\THIRD_PARTY\\Glaze\\glaze-9.0.0\\include /DWIN32 /D_WINDOWS /EHsc /O2 /Ob2 /DNDEBUG -std:c++latest -MD @CMakeFiles\\voidrender_smoke.dir\\examples\\smoke.cpp.obj.modmap /FoCMakeFiles\\voidrender_smoke.dir\\examples\\smoke.cpp.obj /FdCMakeFiles\\voidrender_smoke.dir\\ /FS -c E:\\voidrender\\examples\\smoke.cpp",
+  "file": "E:/voidrender/examples/smoke.cpp",
+  "output": "E:/voidrender/build/CMakeFiles/voidrender_smoke.dir/examples/smoke.cpp.obj"
+}
+]

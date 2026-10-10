@@ -1,9 +1,9 @@
-/* simplegl.h - public API for the simplegl DLL
+/* simplegl.h - public C++ API for the simplegl DLL
  *
- * The DLL exports a plain C ABI (pointers only), so it is safe across
- * compilers/CRTs. In C++ this header additionally provides inline
- * std::vector<float> overloads; they are compiled into YOUR program and
- * only pass raw pointers across the DLL boundary (no STL types cross it).
+ * The draw functions take std::vector<float> directly. Because STL types
+ * cross the DLL boundary, build your program with the same compiler and
+ * CRT/runtime settings as simplegl.dll (e.g. both MSVC /MD).
+ * The window/frame/mode functions are plain C functions.
  *
  * Coordinates default to screen pixels: (0,0) top-left, +y down
  * (see sgl_set_center_mode / sgl_set_clip_mode for the others).
@@ -26,9 +26,13 @@
   #define SGL_API __attribute__((visibility("default")))
 #endif
 
-#ifdef __cplusplus
-extern "C" {
+#ifndef __cplusplus
+  #error "simplegl.h requires C++ (the draw API uses std::vector<float>)"
 #endif
+
+#include <vector>
+
+extern "C" {
 
 /* ---- window / frame ---- */
 SGL_API int  sgl_init(int width, int height, const char* title); /* 1 = ok, 0 = fail */
@@ -52,68 +56,24 @@ SGL_API void sgl_set_clip_mode(void);
  * to make the window resizable/maximizable. */
 SGL_API void sgl_resize_mode(void);
 
-/* ---- drawing (C ABI, raw pointers) ----
- * x, y:    one float per vertex (separate arrays)
- * colors:  r,g,b per vertex, flat array (0..1) -- length = 3 * vertex_count
- */
-SGL_API void draw_tri (const float* x, const float* y, const float* colors); /* 3 verts */
-SGL_API void draw_rect(const float* x, const float* y, const float* colors); /* 4 verts */
-SGL_API void draw_poly(int n, const float* x, const float* y, const float* colors); /* n verts, convex */
+}  /* extern "C" */
 
-/* Line: p0[2] = {x,y}, p1[2] = {x,y}, rgb[3] (0..1), thickness in PIXELS
- * (in every coordinate mode). Flat butt ends, anti-aliased by MSAA. */
-SGL_API void draw_line(const float* p0, const float* p1, const float* rgb, float thickness);
-
-#ifdef __cplusplus
-}
-
-/* ---- drawing (C++, std::vector<float>) ----
+/* ---- drawing (std::vector<float>) ----
+ * x, y:    one float per vertex (separate vectors)
+ * colors:  r,g,b per vertex, flat (0..1) -- size = 3 * vertex count
  * Sizes are validated; on a mismatch nothing is drawn and sgl_error()
  * is set. */
-#include <cstddef>
-#include <vector>
+SGL_API void draw_tri (const std::vector<float>& x, const std::vector<float>& y,
+                       const std::vector<float>& colors);   /* 3 verts */
+SGL_API void draw_rect(const std::vector<float>& x, const std::vector<float>& y,
+                       const std::vector<float>& colors);   /* 4 verts */
+/* n = x.size() (>= 3), convex */
+SGL_API void draw_poly(const std::vector<float>& x, const std::vector<float>& y,
+                       const std::vector<float>& colors);
 
-namespace sgl_detail {
-inline bool check(const char* msg, std::size_t verts,
-                  const std::vector<float>& x,
-                  const std::vector<float>& y,
-                  const std::vector<float>& c) {
-    if (x.size() == verts && y.size() == verts && c.size() == verts * 3)
-        return true;
-    sgl_report_error(msg);
-    return false;
-}
-} // namespace sgl_detail
-
-inline void draw_tri(const std::vector<float>& x, const std::vector<float>& y,
-                     const std::vector<float>& colors) {
-    if (sgl_detail::check("draw_tri: need x[3], y[3], colors[9]", 3, x, y, colors))
-        draw_tri(x.data(), y.data(), colors.data());
-}
-
-inline void draw_rect(const std::vector<float>& x, const std::vector<float>& y,
-                      const std::vector<float>& colors) {
-    if (sgl_detail::check("draw_rect: need x[4], y[4], colors[12]", 4, x, y, colors))
-        draw_rect(x.data(), y.data(), colors.data());
-}
-
-/* n is the vertex count = x.size() (>= 3, convex). */
-inline void draw_poly(const std::vector<float>& x, const std::vector<float>& y,
-                      const std::vector<float>& colors) {
-    if (x.size() < 3) { sgl_report_error("draw_poly: need at least 3 vertices"); return; }
-    if (sgl_detail::check("draw_poly: need x[n], y[n], colors[3n]", x.size(), x, y, colors))
-        draw_poly((int)x.size(), x.data(), y.data(), colors.data());
-}
-
-/* draw_line({x,y}, {x,y}, {r,g,b}, thickness_in_pixels) */
-inline void draw_line(const std::vector<float>& p0, const std::vector<float>& p1,
-                      const std::vector<float>& rgb, float thickness) {
-    if (p0.size() != 2 || p1.size() != 2 || rgb.size() != 3) {
-        sgl_report_error("draw_line: need {x,y}, {x,y}, {r,g,b}");
-        return;
-    }
-    draw_line(p0.data(), p1.data(), rgb.data(), thickness);
-}
-#endif /* __cplusplus */
+/* Line: draw_line({x,y}, {x,y}, {r,g,b}, thickness in PIXELS (every
+ * coordinate mode)). Flat butt ends, anti-aliased by MSAA. */
+SGL_API void draw_line(const std::vector<float>& p0, const std::vector<float>& p1,
+                       const std::vector<float>& rgb, float thickness);
 
 #endif /* SIMPLEGL_H */

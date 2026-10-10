@@ -1,0 +1,20 @@
+# ninja log v7
+18	597	8133380047415307	CMakeFiles/render.dir/src/render.cpp.obj.ddi	843089e767d509ff
+25	657	8133380047505370	CMakeFiles/voidrender_smoke.dir/examples/smoke.cpp.obj.ddi	ceefc81ff292cb52
+600	694	8133380054088142	CMakeFiles/render.dir/CXX.dd	351011480f7c206e
+600	694	8133380054088142	CMakeFiles/render.dir/CXXModules.json	351011480f7c206e
+600	694	8133380054088142	CMakeFiles/render.dir/src/render.cpp.obj.modmap	351011480f7c206e
+658	771	8133380054858161	CMakeFiles/voidrender_smoke.dir/CXX.dd	a250e168ff21fc60
+658	771	8133380054858161	CMakeFiles/voidrender_smoke.dir/CXXModules.json	a250e168ff21fc60
+658	771	8133380054858161	CMakeFiles/voidrender_smoke.dir/examples/smoke.cpp.obj.modmap	a250e168ff21fc60
+775	8816	8133380054988179	CMakeFiles/voidrender_smoke.dir/examples/smoke.cpp.obj	87db1356c61a3fb2
+697	14686	8133380054228142	CMakeFiles/render.dir/src/render.cpp.obj	4ecf9f8aaf250693
+14686	15281	8133380198580590	bin/render.dll	d38fa0539b4400a8
+14686	15281	8133380198580590	lib/render.lib	d38fa0539b4400a8
+21	76	8133381040216520	CMakeFiles/render.dir/CXX.dd	351011480f7c206e
+21	76	8133381040216520	CMakeFiles/render.dir/CXXModules.json	351011480f7c206e
+21	76	8133381040216520	CMakeFiles/render.dir/src/render.cpp.obj.modmap	351011480f7c206e
+27	81	8133381040286582	CMakeFiles/voidrender_smoke.dir/CXX.dd	a250e168ff21fc60
+27	81	8133381040286582	CMakeFiles/voidrender_smoke.dir/CXXModules.json	a250e168ff21fc60
+27	81	8133381040286582	CMakeFiles/voidrender_smoke.dir/examples/smoke.cpp.obj.modmap	a250e168ff21fc60
+84	2877	8133381040846568	bin/voidrender_smoke.exe	8580cbcca18725b0

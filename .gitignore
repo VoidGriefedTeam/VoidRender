@@ -64,3 +64,5 @@ coverage/
 
 # Generated runtime data
 runtime/generated/
+
+git rm -r --cached gwcl_kernel_cache
